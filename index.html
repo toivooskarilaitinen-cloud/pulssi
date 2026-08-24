@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="PULSSI — viisi raakaa sivilisaation virtaa.">
+  <title>PULSSI</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="kicker">VAIMEA LAB / 002</p>
+        <h1>PULSSI</h1>
+        <p class="intro">Viisi raakaa sivilisaation virtaa.</p>
+      </div>
+      <div class="clock" aria-live="polite">
+        <span id="date">—</span>
+        <span id="time">—</span>
+      </div>
+    </header>
+
+    <section id="flows" class="flows" aria-label="Maailman virrat"></section>
+
+    <section class="status-line">
+      <span id="systemState">KERÄTÄÄN VERTAILUTASOA</span>
+      <span id="updated">PÄIVITETTY —</span>
+    </section>
+
+    <details>
+      <summary>MITÄ MITTARIT TARKOITTAVAT</summary>
+      <div class="notes">
+        <p><b>TIETOLIIKENNE</b> Cloudflaren havaitseman maailmanlaajuisen HTTP-liikenteen viimeisin tuntipiste.</p>
+        <p><b>LENTOLIIKENNE</b> OpenSkyn juuri havaitsemat ilmassa olevat ilma-alukset. Kattavuus ei ole täydellinen.</p>
+        <p><b>MERIRAHTI</b> IMF PortWatchiin perustuva satamakäyntien seitsemän päivän virta valituissa satamissa.</p>
+        <p><b>SÄHKÖKUORMA</b> Saksan sähköjärjestelmän viimeisin kuorma. Se toimii seurattujen sähköverkkojen pulssina, ei koko maailman lukuna.</p>
+        <p><b>JULKINEN RAHAVIRTA</b> Bitcoin-verkon arvioitu vuorokaudessa siirtämä dollarimäärä. Se ei edusta kaikkea maailman rahaa.</p>
+        <p>Indeksi 100 tarkoittaa mittarin omaa tavanomaista tasoa. Vertailu käynnistyy, kun havaintoja on kertynyt riittävästi. PULSSI näyttää signaaleja — ei uutisia eikä varmoja syitä.</p>
+      </div>
+    </details>
+
+    <form id="archiveForm" class="archive">
+      <label for="archiveDate">ARKISTO</label>
+      <input id="archiveDate" type="date">
+      <button type="submit">NÄYTÄ</button>
+      <button id="todayButton" type="button">NYT</button>
+      <span id="archiveNote"></span>
+    </form>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>
+
