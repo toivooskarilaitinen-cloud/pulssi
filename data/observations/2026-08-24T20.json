@@ -1,13 +1,13 @@
 {
   "date": "2026-08-24",
-  "generated_at": "2026-08-24T20:13:00.342509+00:00",
-  "method_version": "v0.2",
+  "generated_at": "2026-08-24T20:26:31.339061+00:00",
+  "method_version": "v0.4",
   "baseline_observations": 1,
   "system_state": "alert",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 0.949764,
+      "value": 0.94977,
       "display_value": "0.95",
       "provider": "CLOUDFLARE RADAR",
       "scope": "MAAILMAN HTTP-LIIKENNE",
@@ -19,11 +19,11 @@
     },
     "aviation": {
       "status": "ok",
-      "value": 10839.0,
-      "display_value": "10 839",
+      "value": 10687.0,
+      "display_value": "10 687",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-08-24T20:12:54+00:00",
+      "source_updated": "2026-08-24T20:26:23+00:00",
       "source_index": null,
       "index": null,
       "change_pct": null,
@@ -43,26 +43,62 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 47831.79481350619,
+      "value": 39724.23650458734,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 52.9 GW · ISO-BRITANNIA 29.8 GW · BRASILIA 69.5 GW",
-      "source_updated": "2026-08-24T20:05:00Z",
-      "source_index": null,
-      "index": null,
-      "change_pct": null,
-      "state": "baseline"
+      "scope": "SAKSA 39.2 GW · ISO-BRITANNIA 23.0 GW · BRASILIA 69.5 GW",
+      "source_updated": "2026-08-23",
+      "source_index": 88.83255134970226,
+      "component_indices": [
+        {
+          "name": "SAKSA",
+          "index": 81.46293207678816
+        },
+        {
+          "name": "ISO-BRITANNIA",
+          "index": 100.0
+        },
+        {
+          "name": "BRASILIA",
+          "index": 86.05108870787788
+        }
+      ],
+      "index": 88.83255134970226,
+      "change_pct": -11.167448650297743,
+      "state": "watch"
     },
     "energy": {
       "status": "ok",
-      "value": 1.1428571428571428,
-      "display_value": "1.1 / PV",
-      "provider": "IMF PORTWATCH · STRAITS.LIVE",
-      "scope": "HORMUZIN TANKKERIT · 7 PV KESKIARVO",
+      "value": 96.9647173201795,
+      "display_value": "97.0",
+      "provider": "JODI OIL · IMF PORTWATCH",
+      "scope": "ÖLJYNTUOTANTO 96 · JALOSTAMOJEN SYÖTTÖ 90 · ÖLJYVIENTI 90 · HORMUZIN TANKKERIT 114",
       "source_updated": "2026-08-16",
-      "source_index": 114.28571428571428,
-      "index": 114.28571428571428,
-      "change_pct": 14.285714285714278,
+      "source_index": 96.9647173201795,
+      "components": [
+        {
+          "name": "ÖLJYNTUOTANTO",
+          "index": 95.8153051171761,
+          "coverage": 56
+        },
+        {
+          "name": "JALOSTAMOJEN SYÖTTÖ",
+          "index": 89.6325756022271,
+          "coverage": 56
+        },
+        {
+          "name": "ÖLJYVIENTI",
+          "index": 90.0662815195676,
+          "coverage": 57
+        },
+        {
+          "name": "HORMUZIN TANKKERIT",
+          "index": 114.28571428571428,
+          "coverage": 1
+        }
+      ],
+      "index": 96.9647173201795,
+      "change_pct": -3.0352826798204973,
       "state": "normal"
     }
   }
