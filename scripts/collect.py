@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, math, os, statistics, urllib.parse, urllib.request
+import csv, io, json, math, os, statistics, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -13,6 +13,11 @@ def get_json(url,params=None,headers=None,timeout=35):
     request=urllib.request.Request(url,headers={"User-Agent":UA,**(headers or {})})
     with urllib.request.urlopen(request,timeout=timeout) as response:
         return json.load(response)
+
+def get_text(url,timeout=35):
+    request=urllib.request.Request(url,headers={"User-Agent":UA})
+    with urllib.request.urlopen(request,timeout=timeout) as response:
+        return response.read().decode("utf-8-sig")
 
 def result(value,display,provider,scope,source_updated=None,index=None):
     return {"status":"ok","value":float(value),"display_value":display,"provider":provider,"scope":scope,"source_updated":source_updated,"source_index":index}
@@ -52,19 +57,47 @@ def freight():
 
 def electricity():
     now=datetime.now(timezone.utc); start=(now-timedelta(days=2)).date().isoformat(); end=now.date().isoformat()
+    grids=[]
+
+    # Germany: latest measured load from Fraunhofer Energy-Charts.
     data=get_json("https://api.energy-charts.info/public_power",{"country":"de","start":start,"end":end})
     load=next((x.get("data",[]) for x in data.get("production_types",[]) if x.get("name")=="Load"),[])
     pairs=[(t,v) for t,v in zip(data.get("unix_seconds",[]),load) if isinstance(v,(int,float))]
-    if not pairs: raise RuntimeError("Sähkökuormaa ei saatu")
-    stamp,value=pairs[-1]; mw=float(value)
-    return result(mw,f"{mw/1000:.1f} GW","FRAUNHOFER ENERGY-CHARTS","SAKSAN SÄHKÖJÄRJESTELMÄ",datetime.fromtimestamp(stamp,timezone.utc).isoformat())
+    if pairs:
+        stamp,value=pairs[-1]; grids.append(("SAKSA",float(value),datetime.fromtimestamp(stamp,timezone.utc).isoformat()))
 
-def money():
-    data=get_json("https://api.blockchain.info/stats")
-    value=float(data.get("estimated_transaction_volume_usd") or 0)
-    if value<=0: raise RuntimeError("Bitcoin-siirtovolyymia ei saatu")
-    stamp=datetime.fromtimestamp(float(data.get("timestamp",0))/1000,timezone.utc).isoformat()
-    return result(value,f"${value/1_000_000_000:.1f} MRD","BLOCKCHAIN.COM","BITCOININ ARVIOITU 24 H SIIRTOVOLYYMI",stamp)
+    # Great Britain: official five-minute demand outturn.
+    day=(now-timedelta(days=1)).date().isoformat()
+    gb=get_json("https://data.elexon.co.uk/bmrs/api/v1/demand/outturn/summary",{"settlementDate":day,"format":"json"})
+    gb_rows=[x for x in gb if isinstance(x.get("demand"),(int,float))]
+    if gb_rows:
+        latest=max(gb_rows,key=lambda x:x.get("startTime","")); grids.append(("ISO-BRITANNIA",float(latest["demand"]),latest.get("startTime")))
+
+    # Brazil: official daily load, summed over the four ONS subsystems.
+    year=now.year
+    raw=get_text(f"https://ons-aws-prod-opendata.s3.amazonaws.com/dataset/carga_energia_di/CARGA_ENERGIA_{year}.csv",timeout=45)
+    rows=list(csv.DictReader(io.StringIO(raw),delimiter=";"))
+    dates=[row.get("din_instante","") for row in rows]
+    if dates:
+        latest_date=max(dates); brazil=sum(float(row["val_cargaenergiamwmed"]) for row in rows if row.get("din_instante")==latest_date)
+        if brazil>0: grids.append(("BRASILIA",brazil,latest_date))
+
+    if not grids: raise RuntimeError("Yhtään sähköverkkoa ei saatu")
+    # A geometric composite means that a large grid cannot hide a smaller grid's change.
+    composite=math.exp(statistics.mean(math.log(mw) for _,mw,_ in grids))
+    scope=" · ".join(f"{name} {mw/1000:.1f} GW" for name,mw,_ in grids)
+    stamp=max(str(updated) for _,_,updated in grids if updated)
+    return result(composite,f"{len(grids)} VERKKOA","ENERGY-CHARTS · ELEXON · ONS",scope,stamp)
+
+def energy():
+    data=get_json("https://raw.githubusercontent.com/jasonhjohnson/strait-of-hormuz-data/main/data/transits.json")
+    rows=sorted(data.get("history",[]),key=lambda x:x.get("date",""))
+    values=[float(row.get("nTanker",0)) for row in rows if row.get("nTanker") is not None]
+    if len(values)<14: raise RuntimeError("Tankkeriliikenteen aikasarja jäi liian lyhyeksi")
+    current=statistics.mean(values[-7:])
+    reference=statistics.median(values[-37:-7] or values[:-7])
+    idx=current/reference*100 if reference else None
+    return result(current,f"{current:.1f} / PV","IMF PORTWATCH · STRAITS.LIVE","HORMUZIN TANKKERIT · 7 PV KESKIARVO",rows[-1].get("date"),index=idx)
 
 def safe(fn):
     try:return fn()
@@ -78,7 +111,7 @@ def histories():
     return rows
 
 now=datetime.now(timezone.utc); date=now.date().isoformat(); hour=now.strftime("%Y-%m-%dT%H")
-flows={"internet":safe(internet),"aviation":safe(aviation),"freight":safe(freight),"electricity":safe(electricity),"money":safe(money)}
+flows={"internet":safe(internet),"aviation":safe(aviation),"freight":safe(freight),"electricity":safe(electricity),"energy":safe(energy)}
 history=histories()
 for key,flow in flows.items():
     if flow.get("status")!="ok": continue
@@ -98,7 +131,7 @@ for key,flow in flows.items():
 
 states=[f.get("state") for f in flows.values() if f.get("status")=="ok"]
 system="alert" if "alert" in states else "watch" if "watch" in states else "baseline" if "baseline" in states else "normal"
-snapshot={"date":date,"generated_at":now.isoformat(),"method_version":"v0.1","baseline_observations":len(history),"system_state":system,"flows":flows}
+snapshot={"date":date,"generated_at":now.isoformat(),"method_version":"v0.2","baseline_observations":len(history),"system_state":system,"flows":flows}
 payload=json.dumps(snapshot,ensure_ascii=False,indent=2)
 (DATA/"latest.json").write_text(payload,encoding="utf-8")
 (OBS/f"{hour}.json").write_text(payload,encoding="utf-8")
