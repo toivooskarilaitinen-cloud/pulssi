@@ -14,7 +14,8 @@ function render(data){
     const f=data.flows?.[key]||{status:"unavailable",state:"unavailable"};
     const row=document.createElement("article");row.className="flow";
     const unavailable=f.status!=="ok";
-    row.innerHTML=`<div><div class="flow-name">${labels[key]}</div><div class="flow-meta">${f.scope||""}<br>${f.provider||""}</div></div><div class="flow-value ${unavailable?"unavailable":""}">${unavailable?"—":(f.display_value??f.value)}</div><div class="flow-change">${fmtChange(f.change_pct)}</div><div class="flow-state ${f.state==="alert"?"alert":""}">${stateLabel(unavailable?"unavailable":f.state)}</div>`;
+    const quality=key==="energy"&&f.status==="ok"?`<br>LUOTTAMUS ${f.confidence||"—"} · ÖLJY ${f.oil_updated||"—"} · KAASU ${f.gas_updated||"—"} · NOPEA ${f.fast_updated||"—"}`:"";
+    row.innerHTML=`<div><div class="flow-name">${labels[key]}</div><div class="flow-meta">${f.scope||""}<br>${f.provider||""}${quality}</div></div><div class="flow-value ${unavailable?"unavailable":""}">${unavailable?"—":(f.display_value??f.value)}</div><div class="flow-change">${fmtChange(f.change_pct)}</div><div class="flow-state ${f.state==="alert"?"alert":""}">${stateLabel(unavailable?"unavailable":f.state)}</div>`;
     root.appendChild(row);
   });
   document.getElementById("systemState").textContent=stateLabel(data.system_state||"baseline");
