@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv, io, json, math, os, statistics, urllib.parse, urllib.request
+import csv, io, json, math, os, statistics, urllib.parse, urllib.request, zipfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -21,6 +21,12 @@ def get_text(url,timeout=35):
 
 def result(value,display,provider,scope,source_updated=None,index=None):
     return {"status":"ok","value":float(value),"display_value":display,"provider":provider,"scope":scope,"source_updated":source_updated,"source_index":index}
+
+def weighted_geomean(items):
+    usable=[(value,weight) for value,weight in items if value and value>0 and weight>0]
+    total=sum(weight for _,weight in usable)
+    if not usable or total<=0: raise RuntimeError("Indeksin osia ei saatu")
+    return math.exp(sum(weight*math.log(value) for value,weight in usable)/total)
 
 def internet():
     token=os.getenv("CLOUDFLARE_API_TOKEN")
@@ -110,8 +116,8 @@ def electricity():
     return _electricity_cache
 
 def energy():
-    # Global monthly oil flows. Compare the latest month with the same month
-    # one year earlier, using only countries that reported both observations.
+    # Monthly official anchors: compare like-for-like reporting countries with
+    # the same calendar month one year earlier to remove most seasonality.
     now=datetime.now(timezone.utc); year=now.year
     current_url=f"https://www.jodidata.org/_resources/files/downloads/oil-data/annual-csv/primary/primaryyear{year}.csv"
     previous_url=f"https://www.jodidata.org/_resources/files/downloads/oil-data/annual-csv/primary/{year-1}.csv"
@@ -119,21 +125,50 @@ def energy():
     latest_month=max(row["TIME_PERIOD"] for row in current_rows)
     previous_month=f"{year-1}-{latest_month[-2:]}"
     previous_rows=list(csv.DictReader(io.StringIO(get_text(previous_url,timeout=60))))
-    wanted={"INDPROD":"ÖLJYNTUOTANTO","REFINOBS":"JALOSTAMOJEN SYÖTTÖ","TOTEXPSB":"ÖLJYVIENTI"}
-    def jodi_values(rows,month,flow):
+    def jodi_values(rows,month,flow,product=None,unit=None):
         values={}
         for row in rows:
             raw=row.get("OBS_VALUE","")
-            if row.get("TIME_PERIOD")==month and row.get("FLOW_BREAKDOWN")==flow and row.get("UNIT_MEASURE")=="KBD" and raw not in ("","-","x"):
+            matches=(row.get("TIME_PERIOD")==month and row.get("FLOW_BREAKDOWN")==flow and raw not in ("","-","x"))
+            if product: matches=matches and row.get("ENERGY_PRODUCT")==product
+            if unit: matches=matches and row.get("UNIT_MEASURE")==unit
+            if matches:
                 try: values[row["REF_AREA"]]=float(raw)
                 except ValueError: pass
         return values
-    parts=[]
-    for flow,name in wanted.items():
-        current_values=jodi_values(current_rows,latest_month,flow); previous_values=jodi_values(previous_rows,previous_month,flow)
-        common=current_values.keys() & previous_values.keys()
-        current_total=sum(current_values[country] for country in common); previous_total=sum(previous_values[country] for country in common)
-        if current_total>0 and previous_total>0: parts.append({"name":name,"index":current_total/previous_total*100,"coverage":len(common)})
+
+    def comparable_index(current,previous):
+        common=current.keys() & previous.keys()
+        current_total=sum(current[country] for country in common); previous_total=sum(previous[country] for country in common)
+        if current_total<=0 or previous_total<=0: return None,len(common)
+        return current_total/previous_total*100,len(common)
+
+    oil_parts=[]
+    for flow,name,weight in (("INDPROD","ÖLJYNTUOTANTO",0.50),("REFINOBS","JALOSTAMOJEN SYÖTTÖ",0.30),("TOTEXPSB","ÖLJYVIENTI",0.20)):
+        current_values=jodi_values(current_rows,latest_month,flow,unit="KBD"); previous_values=jodi_values(previous_rows,previous_month,flow,unit="KBD")
+        index,coverage=comparable_index(current_values,previous_values)
+        if index: oil_parts.append({"name":name,"index":index,"coverage":coverage,"weight":weight})
+
+    # Global gas: production, pipeline exports and LNG exports from JODI Gas.
+    gas_bytes=urllib.request.urlopen(urllib.request.Request("https://www.jodidata.org/jodi-publisher/gas/17/GAS_world_NewFormat.zip",headers={"User-Agent":UA}),timeout=60).read()
+    with zipfile.ZipFile(io.BytesIO(gas_bytes)) as archive:
+        gas_name=next(name for name in archive.namelist() if name.lower().endswith(".csv"))
+        gas_rows=list(csv.DictReader(io.StringIO(archive.read(gas_name).decode("utf-8-sig"))))
+    gas_months=sorted({row["TIME_PERIOD"] for row in gas_rows})
+    gas_parts=[]
+    for flow,product,name,weight in (("INDPROD","NATGAS","KAASUNTUOTANTO",0.50),("EXPPIP","NATGAS","PUTKIKAASU",0.25),("EXPLNG","NATGAS","LNG-VIENTI",0.25)):
+        for month in reversed(gas_months):
+            previous=f"{int(month[:4])-1}-{month[-2:]}"
+            current_values=jodi_values(gas_rows,month,flow,product=product,unit="TJ"); previous_values=jodi_values(gas_rows,previous,flow,product=product,unit="TJ")
+            index,coverage=comparable_index(current_values,previous_values)
+            if index and coverage>=10:
+                gas_parts.append({"name":name,"index":index,"coverage":coverage,"weight":weight,"period":month})
+                break
+
+    if len(oil_parts)<2 or len(gas_parts)<2: raise RuntimeError("Öljyn tai kaasun vertailuosia saatiin liian vähän")
+    oil_anchor=weighted_geomean([(part["index"],part["weight"]) for part in oil_parts])
+    gas_index=weighted_geomean([(part["index"],part["weight"]) for part in gas_parts])
+    gas_latest=max(part["period"] for part in gas_parts)
 
     # Near-current physical bottleneck: observed tanker passages through Hormuz.
     data=get_json("https://raw.githubusercontent.com/jasonhjohnson/strait-of-hormuz-data/main/data/transits.json")
@@ -143,12 +178,20 @@ def energy():
     current=statistics.mean(values[-7:])
     reference=statistics.median(values[-37:-7] or values[:-7])
     tanker_index=current/reference*100 if reference else 100
-    parts.append({"name":"HORMUZIN TANKKERIT","index":tanker_index,"coverage":1})
-    if len(parts)<3: raise RuntimeError("Energiavirran osia saatiin liian vähän")
-    idx=math.exp(statistics.mean(math.log(part["index"]) for part in parts))
-    scope=" · ".join(f'{part["name"]} {part["index"]:.0f}' for part in parts)
-    flow=result(idx,f"{idx:.1f}","JODI OIL · IMF PORTWATCH",scope,max(latest_month,rows[-1].get("date","")),index=idx)
-    flow["components"]=parts
+    # Hormuz is a fast disturbance signal inside oil, not a fourth global flow.
+    # Capping it prevents one chokepoint from overwhelming the monthly anchor.
+    tanker_capped=max(50,min(150,tanker_index))
+    oil_index=weighted_geomean([(oil_anchor,0.85),(tanker_capped,0.15)])
+
+    # Global primary-energy shares: oil 40 %, gas 30 %, coal 20 %, other fuels
+    # 10 %. Only observed sectors enter the index; coverage exposes the gap.
+    idx=weighted_geomean([(oil_index,0.40),(gas_index,0.30)])
+    coverage_pct=70
+    confidence="KESKITASO"
+    parts=[{"name":"ÖLJY","index":oil_index,"weight":40,"details":oil_parts},{"name":"KAASU JA LNG","index":gas_index,"weight":30,"details":gas_parts},{"name":"HORMUZ","index":tanker_index,"weight":0,"role":"NOPEA HÄIRIÖSIGNAALI"}]
+    scope=f"ÖLJY {oil_index:.0f} · KAASU JA LNG {gas_index:.0f} · KATTAVUUS {coverage_pct} %"
+    flow=result(idx,f"{idx:.1f}","JODI OIL · JODI GAS · IMF PORTWATCH",scope,max(latest_month,gas_latest,rows[-1].get("date","")),index=idx)
+    flow.update({"components":parts,"coverage_pct":coverage_pct,"confidence":confidence,"oil_updated":latest_month,"gas_updated":gas_latest,"fast_updated":rows[-1].get("date")})
     return flow
 
 def safe(fn):
@@ -183,7 +226,7 @@ for key,flow in flows.items():
 
 states=[f.get("state") for f in flows.values() if f.get("status")=="ok"]
 system="alert" if "alert" in states else "watch" if "watch" in states else "baseline" if "baseline" in states else "normal"
-snapshot={"date":date,"generated_at":now.isoformat(),"method_version":"v0.4","baseline_observations":len(history),"system_state":system,"flows":flows}
+snapshot={"date":date,"generated_at":now.isoformat(),"method_version":"v0.5","baseline_observations":len(history),"system_state":system,"flows":flows}
 payload=json.dumps(snapshot,ensure_ascii=False,indent=2)
 (DATA/"latest.json").write_text(payload,encoding="utf-8")
 (OBS/f"{hour}.json").write_text(payload,encoding="utf-8")
