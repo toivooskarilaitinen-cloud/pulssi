@@ -14,5 +14,5 @@ GitHub Actions kerää uuden snapshotin neljä kertaa vuorokaudessa. Päivän vi
 - OpenSky Network: havaitut ilmassa olevat ilma-alukset
 - IMF PortWatch / HDX: valittujen satamien seitsemän päivän satamakäynti-indeksi
 - Fraunhofer Energy-Charts, Elexon ja Brasilian ONS: Saksan, Ison-Britannian ja Brasilian sähkökuormat. Geometrinen yhdistelmä antaa jokaiselle verkolle saman painon.
-- IMF PortWatch / straits.live: Hormuzinsalmen havaittujen tankkerikulkujen seitsemän päivän keskiarvo
+- Energiavirtaindeksi: JODI Oilin maailman öljyntuotanto, jalostamojen syöttö ja öljyvienti sekä IMF PortWatchiin perustuva Hormuzinsalmen tankkerivirta. Neljä osavirtaa yhdistetään geometrisella keskiarvolla, joten jokaisella on sama paino. Sähkövirta ei kuulu energiavirtaindeksiin.
 
