@@ -1,7 +1,7 @@
 {
   "date": "2026-08-24",
-  "generated_at": "2026-08-24T20:26:31.339061+00:00",
-  "method_version": "v0.4",
+  "generated_at": "2026-08-24T20:48:34.409087+00:00",
+  "method_version": "v0.5",
   "baseline_observations": 1,
   "system_state": "alert",
   "flows": {
@@ -19,11 +19,11 @@
     },
     "aviation": {
       "status": "ok",
-      "value": 10687.0,
-      "display_value": "10 687",
+      "value": 10349.0,
+      "display_value": "10 349",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-08-24T20:26:23+00:00",
+      "source_updated": "2026-08-24T20:48:29+00:00",
       "source_index": null,
       "index": null,
       "change_pct": null,
@@ -43,7 +43,7 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 39724.23650458734,
+      "value": 39732.634067251,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
       "scope": "SAKSA 39.2 GW · ISO-BRITANNIA 23.0 GW · BRASILIA 69.5 GW",
@@ -69,36 +69,80 @@
     },
     "energy": {
       "status": "ok",
-      "value": 96.9647173201795,
-      "display_value": "97.0",
-      "provider": "JODI OIL · IMF PORTWATCH",
-      "scope": "ÖLJYNTUOTANTO 96 · JALOSTAMOJEN SYÖTTÖ 90 · ÖLJYVIENTI 90 · HORMUZIN TANKKERIT 114",
+      "value": 101.55059660925673,
+      "display_value": "101.6",
+      "provider": "JODI OIL · JODI GAS · IMF PORTWATCH",
+      "scope": "ÖLJY 96 · KAASU JA LNG 110 · KATTAVUUS 70 %",
       "source_updated": "2026-08-16",
-      "source_index": 96.9647173201795,
+      "source_index": 101.55059660925673,
       "components": [
         {
-          "name": "ÖLJYNTUOTANTO",
-          "index": 95.8153051171761,
-          "coverage": 56
+          "name": "ÖLJY",
+          "index": 95.71125193245429,
+          "weight": 40,
+          "details": [
+            {
+              "name": "ÖLJYNTUOTANTO",
+              "index": 95.8153051171761,
+              "coverage": 56,
+              "weight": 0.5
+            },
+            {
+              "name": "JALOSTAMOJEN SYÖTTÖ",
+              "index": 89.6325756022271,
+              "coverage": 56,
+              "weight": 0.3
+            },
+            {
+              "name": "ÖLJYVIENTI",
+              "index": 90.0662815195676,
+              "coverage": 57,
+              "weight": 0.2
+            }
+          ]
         },
         {
-          "name": "JALOSTAMOJEN SYÖTTÖ",
-          "index": 89.6325756022271,
-          "coverage": 56
+          "name": "KAASU JA LNG",
+          "index": 109.89428866905233,
+          "weight": 30,
+          "details": [
+            {
+              "name": "KAASUNTUOTANTO",
+              "index": 103.91597188781216,
+              "coverage": 41,
+              "weight": 0.5,
+              "period": "2026-01"
+            },
+            {
+              "name": "PUTKIKAASU",
+              "index": 111.83082535195798,
+              "coverage": 40,
+              "weight": 0.25,
+              "period": "2026-01"
+            },
+            {
+              "name": "LNG-VIENTI",
+              "index": 120.77425056159316,
+              "coverage": 35,
+              "weight": 0.25,
+              "period": "2026-01"
+            }
+          ]
         },
         {
-          "name": "ÖLJYVIENTI",
-          "index": 90.0662815195676,
-          "coverage": 57
-        },
-        {
-          "name": "HORMUZIN TANKKERIT",
+          "name": "HORMUZ",
           "index": 114.28571428571428,
-          "coverage": 1
+          "weight": 0,
+          "role": "NOPEA HÄIRIÖSIGNAALI"
         }
       ],
-      "index": 96.9647173201795,
-      "change_pct": -3.0352826798204973,
+      "coverage_pct": 70,
+      "confidence": "KESKITASO",
+      "oil_updated": "2026-06",
+      "gas_updated": "2026-01",
+      "fast_updated": "2026-08-16",
+      "index": 101.55059660925673,
+      "change_pct": 1.5505966092567292,
       "state": "normal"
     }
   }
