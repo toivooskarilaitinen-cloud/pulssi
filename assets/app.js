@@ -1,5 +1,5 @@
-const order=["internet","aviation","freight","electricity","money"];
-const labels={internet:"TIETOLIIKENNE",aviation:"LENTOLIIKENNE",freight:"MERIRAHTI",electricity:"SÄHKÖKUORMA",money:"JULKINEN RAHAVIRTA"};
+const order=["internet","aviation","freight","electricity","energy"];
+const labels={internet:"TIETOLIIKENNE",aviation:"LENTOLIIKENNE",freight:"MERIRAHTI",electricity:"SÄHKÖVIRTA",energy:"ENERGIAVIRTA"};
 
 function updateClock(){
   const now=new Date();
