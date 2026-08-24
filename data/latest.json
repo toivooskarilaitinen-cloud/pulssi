@@ -1,0 +1,65 @@
+{
+  "date": "2026-08-24",
+  "generated_at": "2026-08-24T19:39:30.015087+00:00",
+  "method_version": "v0.1",
+  "baseline_observations": 0,
+  "system_state": "alert",
+  "flows": {
+    "internet": {
+      "status": "unavailable",
+      "value": null,
+      "provider": "INTERNET",
+      "scope": "CLOUDFLARE_API_TOKEN puuttuu",
+      "state": "unavailable",
+      "change_pct": null
+    },
+    "aviation": {
+      "status": "ok",
+      "value": 11066.0,
+      "display_value": "11 066",
+      "provider": "OPENSKY NETWORK",
+      "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
+      "source_updated": "2026-08-24T19:39:26+00:00",
+      "source_index": null,
+      "index": null,
+      "change_pct": null,
+      "state": "baseline"
+    },
+    "freight": {
+      "status": "ok",
+      "value": 76.33587786259541,
+      "display_value": "76.3",
+      "provider": "IMF PORTWATCH / HDX",
+      "scope": "VALITTUJEN SATAMIEN 7 PV INDEKSI",
+      "source_updated": "14 Aug 2026",
+      "source_index": 76.33587786259541,
+      "index": 76.33587786259541,
+      "change_pct": -23.66412213740459,
+      "state": "alert"
+    },
+    "electricity": {
+      "status": "ok",
+      "value": 54673.2,
+      "display_value": "54.7 GW",
+      "provider": "FRAUNHOFER ENERGY-CHARTS",
+      "scope": "SAKSAN SÄHKÖJÄRJESTELMÄ",
+      "source_updated": "2026-08-24T17:15:00+00:00",
+      "source_index": null,
+      "index": null,
+      "change_pct": null,
+      "state": "baseline"
+    },
+    "money": {
+      "status": "ok",
+      "value": 8752695015.263615,
+      "display_value": "$8.8 MRD",
+      "provider": "BLOCKCHAIN.COM",
+      "scope": "BITCOININ ARVIOITU 24 H SIIRTOVOLYYMI",
+      "source_updated": "2026-08-24T19:34:24+00:00",
+      "source_index": null,
+      "index": null,
+      "change_pct": null,
+      "state": "baseline"
+    }
+  }
+}
