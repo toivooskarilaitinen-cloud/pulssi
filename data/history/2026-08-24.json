@@ -1,14 +1,14 @@
 {
   "date": "2026-08-24",
-  "generated_at": "2026-08-24T19:59:50.636331+00:00",
-  "method_version": "v0.1",
+  "generated_at": "2026-08-24T20:13:00.342509+00:00",
+  "method_version": "v0.2",
   "baseline_observations": 1,
   "system_state": "alert",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 0.976295,
-      "display_value": "0.98",
+      "value": 0.949764,
+      "display_value": "0.95",
       "provider": "CLOUDFLARE RADAR",
       "scope": "MAAILMAN HTTP-LIIKENNE",
       "source_updated": null,
@@ -19,11 +19,11 @@
     },
     "aviation": {
       "status": "ok",
-      "value": 10904.0,
-      "display_value": "10 904",
+      "value": 10839.0,
+      "display_value": "10 839",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-08-24T19:59:36+00:00",
+      "source_updated": "2026-08-24T20:12:54+00:00",
       "source_index": null,
       "index": null,
       "change_pct": null,
@@ -43,27 +43,27 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 52898.5,
-      "display_value": "52.9 GW",
-      "provider": "FRAUNHOFER ENERGY-CHARTS",
-      "scope": "SAKSAN SÄHKÖJÄRJESTELMÄ",
-      "source_updated": "2026-08-24T18:15:00+00:00",
+      "value": 47831.79481350619,
+      "display_value": "3 VERKKOA",
+      "provider": "ENERGY-CHARTS · ELEXON · ONS",
+      "scope": "SAKSA 52.9 GW · ISO-BRITANNIA 29.8 GW · BRASILIA 69.5 GW",
+      "source_updated": "2026-08-24T20:05:00Z",
       "source_index": null,
       "index": null,
       "change_pct": null,
       "state": "baseline"
     },
-    "money": {
+    "energy": {
       "status": "ok",
-      "value": 9009009111.81601,
-      "display_value": "$9.0 MRD",
-      "provider": "BLOCKCHAIN.COM",
-      "scope": "BITCOININ ARVIOITU 24 H SIIRTOVOLYYMI",
-      "source_updated": "2026-08-24T19:55:24+00:00",
-      "source_index": null,
-      "index": null,
-      "change_pct": null,
-      "state": "baseline"
+      "value": 1.1428571428571428,
+      "display_value": "1.1 / PV",
+      "provider": "IMF PORTWATCH · STRAITS.LIVE",
+      "scope": "HORMUZIN TANKKERIT · 7 PV KESKIARVO",
+      "source_updated": "2026-08-16",
+      "source_index": 114.28571428571428,
+      "index": 114.28571428571428,
+      "change_pct": 14.285714285714278,
+      "state": "normal"
     }
   }
 }
