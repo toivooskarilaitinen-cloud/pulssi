@@ -1,30 +1,30 @@
 {
   "date": "2026-08-25",
-  "generated_at": "2026-08-25T13:09:50.516289+00:00",
+  "generated_at": "2026-08-25T18:56:06.492791+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 5,
+  "baseline_observations": 6,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
   "system_state": "anomaly",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 108.35015080687181,
-      "display_value": "108.4",
+      "value": 108.24965968827007,
+      "display_value": "108.2",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 108.35015080687181,
-      "index": 108.35015080687181,
-      "change_pct": 8.35015080687181,
+      "source_index": 108.24965968827007,
+      "index": 108.24965968827007,
+      "change_pct": 8.249659688270071,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 11066.0,
-      "display_value": "11 066",
+      "value": 11192.0,
+      "display_value": "11 192",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-08-25T13:09:40+00:00",
+      "source_updated": "2026-08-25T18:56:00+00:00",
       "source_index": null,
       "index": null,
       "change_pct": null,
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 43257.12290360998,
+      "value": 43626.44053033339,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 48.9 GW · ISO-BRITANNIA 23.9 GW · BRASILIA 69.5 GW",
+      "scope": "SAKSA 48.8 GW · ISO-BRITANNIA 24.3 GW · BRASILIA 70.0 GW",
       "source_updated": "2026-08-24",
-      "source_index": 95.56470181567822,
+      "source_index": 95.74008462139713,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 101.42293118673582
+          "index": 101.36175846837992
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,11 +61,11 @@
         },
         {
           "name": "BRASILIA",
-          "index": 86.05108870787788
+          "index": 86.57794728930894
         }
       ],
-      "index": 95.56470181567822,
-      "change_pct": -4.4352981843217805,
+      "index": 95.74008462139713,
+      "change_pct": -4.259915378602869,
       "state": "normal"
     },
     "energy": {
