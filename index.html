@@ -31,12 +31,12 @@
     <details>
       <summary>MITÄ MITTARIT TARKOITTAVAT</summary>
       <div class="notes">
-        <p><b>TIETOLIIKENNE</b> Cloudflaren havaitseman maailmanlaajuisen HTTP-liikenteen viimeisin tuntipiste.</p>
-        <p><b>LENTOLIIKENNE</b> OpenSkyn juuri havaitsemat ilmassa olevat ilma-alukset. Kattavuus ei ole täydellinen.</p>
+        <p><b>TIETOLIIKENNE</b> Cloudflare Radarin suhteellinen HTTP-aktiivisuus. Luku ei ole raaka maailman pyyntömäärä: viimeisintä tuntia verrataan edellisten päivien samaan UTC-tuntiin.</p>
+        <p><b>LENTOLIIKENNE</b> OpenSkyn juuri havaitsemat ilmassa olevat ilma-alukset. Kattavuus ei ole täydellinen. Vertailutaso suosii samaa viikonpäivää ja UTC-tuntia, jotta lentoliikenteen vahva viikko- ja vuorokausirytmi ei näytä poikkeamalta.</p>
         <p><b>MERIRAHTI</b> IMF PortWatchiin perustuva satamakäyntien seitsemän päivän virta valituissa satamissa.</p>
         <p><b>SÄHKÖVIRTA</b> Saksan, Ison-Britannian ja Brasilian sähkökuormien yhdistelmä. Jokainen verkko suhteutetaan ensin omaan lähihistoriaansa.</p>
-        <p><b>ENERGIAVIRTA</b> Sähköstä erillinen indeksi yhdistää maailman öljy- sekä kaasu- ja LNG-virrat. Virallinen kuukausitaso perustuu samoihin raportoiviin maihin ja edellisvuoden vastaavaan kuukauteen. Hormuz toimii rajattuna nopeana häiriösignaalina eikä omana tasavertaisena energiavirtanaan. Kattavuus kertoo, kuinka suuri osa maailman energialajeista on mukana.</p>
-        <p>Indeksi 100 tarkoittaa mittarin omaa tavanomaista tasoa. Vertailu käynnistyy, kun havaintoja on kertynyt riittävästi. Kattavuus ja luottamus ovat osa tulosta: puuttuvaa dataa ei peitetä. PULSSI näyttää signaaleja — ei uutisia eikä varmoja syitä.</p>
+        <p><b>ENERGIAVIRTA</b> Sähköstä erillinen hidas taustatila, ei tämän hetken reaaliaikainen pulssi. Indeksi yhdistää kuukausittaiset öljy- sekä kaasu- ja LNG-virrat; Hormuz toimii rajattuna nopeana häiriösignaalina. Näkymä kertoo erikseen osien ajankohdat, kattavuuden ja luottamuksen.</p>
+        <p>Indeksi 100 tarkoittaa mittarin omaa tavanomaista tasoa. Plus- ja miinuspoikkeamat luokitellaan symmetrisesti: tavallista vilkkaampi on yhtä näkyvä kuin tavallista hiljaisempi. Vertailu suosii samaa viikonpäivää ja UTC-tuntia ja käyttää tarvittaessa saman tunnin laajempaa historiaa. PULSSI näyttää signaaleja — ei uutisia eikä varmoja syitä.</p>
       </div>
     </details>
 
@@ -51,4 +51,3 @@
   <script src="assets/app.js"></script>
 </body>
 </html>
-

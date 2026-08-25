@@ -10,9 +10,10 @@ GitHub Actions kerää uuden snapshotin neljä kertaa vuorokaudessa. Päivän vi
 
 ## Lähteet
 
-- Cloudflare Radar: maailman HTTP-liikenteen tuntisarja
-- OpenSky Network: havaitut ilmassa olevat ilma-alukset
+- Cloudflare Radar: suhteellinen HTTP-aktiivisuus verrattuna edellisten päivien samaan UTC-tuntiin; ei raaka maailman pyyntömäärä
+- OpenSky Network: havaitut ilmassa olevat ilma-alukset; paikallinen vertailutaso suosii samaa viikonpäivää ja UTC-tuntia
 - IMF PortWatch / HDX: valittujen satamien seitsemän päivän satamakäynti-indeksi
 - Fraunhofer Energy-Charts, Elexon ja Brasilian ONS: Saksan, Ison-Britannian ja Brasilian sähkökuormat. Geometrinen yhdistelmä antaa jokaiselle verkolle saman painon.
-- Energiavirtaindeksi: JODI Oilin öljyntuotanto, jalostamojen syöttö ja vienti muodostavat öljyn hitaan ankkurin. JODI Gasin kaasuntuotanto, putkivienti ja LNG-vienti muodostavat kaasun ankkurin. Hormuzin tankkerivirta toimii painoltaan rajattuna nopeana häiriösignaalina öljyindeksin sisällä. Öljyn maailman energiaosuus on 40 % ja kaasun 30 %; puuttuvat hiili ja muut polttoaineet näkyvät 70 %:n kattavuutena eikä niiden painoa teeskennellä havaituksi. Sähkövirta ei kuulu energiavirtaindeksiin.
+- Energiavirtaindeksi on hidas taustatila, ei reaaliaikainen pulssi. JODI Oilin öljyntuotanto, jalostamojen syöttö ja vienti muodostavat öljyn kuukausiankkurin. JODI Gasin kaasuntuotanto, putkivienti ja LNG-vienti muodostavat kaasun kuukausiankkurin. Hormuzin tankkerivirta toimii painoltaan rajattuna nopeana häiriösignaalina. Käyttöliittymä näyttää osien eri päivitysajankohdat, kattavuuden ja luottamuksen.
 
+Menetelmä v0.6 luokittelee sekä tavallista hiljaisemmat että tavallista vilkkaammat poikkeamat symmetrisesti. Havaintohistoriaa verrataan ensisijaisesti samaan viikonpäivään ja UTC-tuntiin, toissijaisesti samaan UTC-tuntiin.

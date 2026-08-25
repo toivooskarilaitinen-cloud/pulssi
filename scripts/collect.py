@@ -31,11 +31,16 @@ def weighted_geomean(items):
 def internet():
     token=os.getenv("CLOUDFLARE_API_TOKEN")
     if not token: raise RuntimeError("CLOUDFLARE_API_TOKEN puuttuu")
-    data=get_json("https://api.cloudflare.com/client/v4/radar/http/timeseries",{"dateRange":"1d","aggInterval":"1h","format":"JSON"},{"Authorization":f"Bearer {token}"})
+    data=get_json("https://api.cloudflare.com/client/v4/radar/http/timeseries",{"dateRange":"28d","aggInterval":"1h","format":"JSON"},{"Authorization":f"Bearer {token}"})
     series=data.get("result",{}).get("serie_0",{})
     values=[float(v) for v in series.get("values",[]) if v is not None]
     if not values: raise RuntimeError("Cloudflare ei palauttanut aikasarjaa")
-    return result(values[-1],f"{values[-1]:.2f}","CLOUDFLARE RADAR","MAAILMAN HTTP-LIIKENNE")
+    comparable=values[-25::-24]
+    if len(comparable)<7: raise RuntimeError("Cloudflare same-hour -vertailu jäi liian lyhyeksi")
+    baseline=statistics.median(comparable[:27])
+    idx=values[-1]/baseline*100 if baseline else None
+    if idx is None: raise RuntimeError("Cloudflare same-hour -vertailutaso oli nolla")
+    return result(idx,f"{idx:.1f}","CLOUDFLARE RADAR","SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",index=idx)
 
 def aviation():
     data=get_json("https://opensky-network.org/api/states/all",timeout=45)
@@ -191,7 +196,8 @@ def energy():
     parts=[{"name":"ÖLJY","index":oil_index,"weight":40,"details":oil_parts},{"name":"KAASU JA LNG","index":gas_index,"weight":30,"details":gas_parts},{"name":"HORMUZ","index":tanker_index,"weight":0,"role":"NOPEA HÄIRIÖSIGNAALI"}]
     scope=f"ÖLJY {oil_index:.0f} · KAASU JA LNG {gas_index:.0f} · KATTAVUUS {coverage_pct} %"
     flow=result(idx,f"{idx:.1f}","JODI OIL · JODI GAS · IMF PORTWATCH",scope,max(latest_month,gas_latest,rows[-1].get("date","")),index=idx)
-    flow.update({"components":parts,"coverage_pct":coverage_pct,"confidence":confidence,"oil_updated":latest_month,"gas_updated":gas_latest,"fast_updated":rows[-1].get("date")})
+    flow.update({"components":parts,"coverage_pct":coverage_pct,"confidence":confidence,"oil_updated":latest_month,"gas_updated":gas_latest,"fast_updated":rows[-1].get("date"),
+                 "temporal_profile":"HIDAS TAUSTATILA + NOPEA HÄIRIÖSIGNAALI"})
     return flow
 
 def safe(fn):
@@ -205,31 +211,55 @@ def histories():
         except Exception: pass
     return rows
 
+def observations():
+    rows=[]
+    for path in sorted(OBS.glob("*.json")):
+        try: rows.append(json.loads(path.read_text(encoding="utf-8")))
+        except Exception: pass
+    return rows
+
+def parsed_time(snapshot):
+    try:return datetime.fromisoformat(snapshot.get("generated_at","").replace("Z","+00:00"))
+    except (TypeError,ValueError):return None
+
+def baseline_rows(rows,current_time,minimum=7):
+    timed=[(parsed_time(row),row) for row in rows]
+    timed=[(stamp,row) for stamp,row in timed if stamp and stamp<current_time]
+    same_slot=[row for stamp,row in timed if stamp.weekday()==current_time.weekday() and stamp.hour==current_time.hour]
+    if len(same_slot)>=minimum:return same_slot[-13:]
+    same_hour=[row for stamp,row in timed if stamp.hour==current_time.hour]
+    if len(same_hour)>=minimum:return same_hour[-30:]
+    return [row for _,row in timed[-90:]]
+
 now=datetime.now(timezone.utc); date=now.date().isoformat(); hour=now.strftime("%Y-%m-%dT%H")
 flows={"internet":safe(internet),"aviation":safe(aviation),"freight":safe(freight),"electricity":safe(electricity),"energy":safe(energy)}
 history=histories()
+observation_history=observations()
+comparison_rows=baseline_rows(observation_history or history,now)
 for key,flow in flows.items():
     if flow.get("status")!="ok": continue
     if flow.get("source_index") is not None:
         index=float(flow["source_index"]); change=index-100
     else:
-        past=[h.get("flows",{}).get(key,{}).get("value") for h in history[-30:]]
+        past=[h.get("flows",{}).get(key,{}).get("value") for h in comparison_rows]
         past=[float(v) for v in past if isinstance(v,(int,float))]
         baseline=statistics.median(past) if len(past)>=7 else None
         index=(flow["value"]/baseline*100) if baseline else None
         change=(index-100) if index is not None else None
     flow["index"]=index;flow["change_pct"]=change
     if change is None: flow["state"]="baseline"
-    elif change<=-20: flow["state"]="alert"
-    elif change<=-10: flow["state"]="watch"
+    elif change<=-20: flow["state"]="low_anomaly"
+    elif change<=-10: flow["state"]="low_watch"
+    elif change>=20: flow["state"]="high_anomaly"
+    elif change>=10: flow["state"]="high_watch"
     else: flow["state"]="normal"
 
 states=[f.get("state") for f in flows.values() if f.get("status")=="ok"]
-system="alert" if "alert" in states else "watch" if "watch" in states else "baseline" if "baseline" in states else "normal"
-snapshot={"date":date,"generated_at":now.isoformat(),"method_version":"v0.5","baseline_observations":len(history),"system_state":system,"flows":flows}
+system="anomaly" if any(s in ("low_anomaly","high_anomaly") for s in states) else "watch" if any(s in ("low_watch","high_watch") for s in states) else "baseline" if "baseline" in states else "normal"
+snapshot={"date":date,"generated_at":now.isoformat(),"method_version":"v0.6","baseline_observations":len(comparison_rows),
+          "baseline_method":"same weekday + UTC hour; fallback same UTC hour; rolling median","system_state":system,"flows":flows}
 payload=json.dumps(snapshot,ensure_ascii=False,indent=2)
 (DATA/"latest.json").write_text(payload,encoding="utf-8")
 (OBS/f"{hour}.json").write_text(payload,encoding="utf-8")
 (HISTORY/f"{date}.json").write_text(payload,encoding="utf-8")
 print(payload)
-
