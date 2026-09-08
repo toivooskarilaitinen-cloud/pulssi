@@ -1,34 +1,34 @@
 {
   "date": "2026-09-08",
-  "generated_at": "2026-09-08T04:31:26.229691+00:00",
+  "generated_at": "2026-09-08T11:14:48.641867+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 52,
+  "baseline_observations": 53,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "anomaly",
+  "system_state": "watch",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 101.71109342689189,
-      "display_value": "101.7",
+      "value": 102.36953508662259,
+      "display_value": "102.4",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 101.71109342689189,
-      "index": 101.71109342689189,
-      "change_pct": 1.7110934268918925,
+      "source_index": 102.36953508662259,
+      "index": 102.36953508662259,
+      "change_pct": 2.369535086622591,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 5565.0,
-      "display_value": "5 565",
+      "value": 7784.0,
+      "display_value": "7 784",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-09-08T04:31:13+00:00",
+      "source_updated": "2026-09-08T11:14:45+00:00",
       "source_index": null,
-      "index": 59.556934931506845,
-      "change_pct": -40.443065068493155,
-      "state": "low_anomaly"
+      "index": 84.13316039775184,
+      "change_pct": -15.866839602248163,
+      "state": "low_watch"
     },
     "freight": {
       "status": "ok",
@@ -44,10 +44,10 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 43612.6918279001,
+      "value": 44256.8689133345,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 41.9 GW · ISO-BRITANNIA 25.6 GW · BRASILIA 77.3 GW",
+      "scope": "SAKSA 41.9 GW · ISO-BRITANNIA 26.8 GW · BRASILIA 77.3 GW",
       "source_updated": "2026-09-07",
       "source_index": 90.65060412378891,
       "component_indices": [
