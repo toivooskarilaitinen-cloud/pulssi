@@ -1,6 +1,6 @@
 {
   "date": "2026-09-13",
-  "generated_at": "2026-09-13T16:13:58.881246+00:00",
+  "generated_at": "2026-09-13T20:47:03.313236+00:00",
   "method_version": "v0.6",
   "baseline_observations": 10,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
@@ -8,26 +8,26 @@
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 96.55135170277535,
-      "display_value": "96.6",
+      "value": 99.95530863920968,
+      "display_value": "100.0",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 96.55135170277535,
-      "index": 96.55135170277535,
-      "change_pct": -3.4486482972246506,
+      "source_index": 99.95530863920968,
+      "index": 99.95530863920968,
+      "change_pct": -0.0446913607903241,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 11694.0,
-      "display_value": "11 694",
+      "value": 10387.0,
+      "display_value": "10 387",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-09-13T16:13:54+00:00",
+      "source_updated": "2026-09-13T20:46:56+00:00",
       "source_index": null,
-      "index": 96.89688030824047,
-      "change_pct": -3.103119691759531,
+      "index": 100.2267573696145,
+      "change_pct": 0.22675736961450355,
       "state": "normal"
     },
     "freight": {
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 46229.881420874495,
+      "value": 46219.54650372554,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
       "scope": "SAKSA 45.1 GW · ISO-BRITANNIA 25.5 GW · BRASILIA 85.8 GW",
       "source_updated": "2026-09-12",
-      "source_index": 95.47717411426459,
+      "source_index": 95.47793264744374,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 84.79921781771857
+          "index": 84.80123893528622
         },
         {
           "name": "ISO-BRITANNIA",
@@ -64,8 +64,8 @@
           "index": 102.63767913265431
         }
       ],
-      "index": 95.47717411426459,
-      "change_pct": -4.522825885735415,
+      "index": 95.47793264744374,
+      "change_pct": -4.522067352556263,
       "state": "normal"
     },
     "energy": {
