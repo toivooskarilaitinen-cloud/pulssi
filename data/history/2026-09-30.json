@@ -1,59 +1,59 @@
 {
   "date": "2026-09-30",
-  "generated_at": "2026-09-30T12:30:30.770785+00:00",
+  "generated_at": "2026-09-30T22:12:40.202130+00:00",
   "method_version": "v0.6",
   "baseline_observations": 90,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "anomaly",
+  "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 106.31994928475528,
-      "display_value": "106.3",
+      "value": 102.79244140270123,
+      "display_value": "102.8",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 106.31994928475528,
-      "index": 106.31994928475528,
-      "change_pct": 6.319949284755282,
+      "source_index": 102.79244140270123,
+      "index": 102.79244140270123,
+      "change_pct": 2.792441402701229,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 9497.0,
-      "display_value": "9 497",
+      "value": 9648.0,
+      "display_value": "9 648",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-09-30T12:30:25+00:00",
+      "source_updated": "2026-09-30T22:12:34+00:00",
       "source_index": null,
-      "index": 102.82033237698262,
-      "change_pct": 2.82033237698262,
+      "index": 104.45515076056948,
+      "change_pct": 4.455150760569481,
       "state": "normal"
     },
     "freight": {
       "status": "ok",
-      "value": 120.33898305084745,
-      "display_value": "120.3",
+      "value": 101.47058823529412,
+      "display_value": "101.5",
       "provider": "IMF PORTWATCH / HDX",
       "scope": "VALITTUJEN SATAMIEN 7 PV INDEKSI",
-      "source_updated": "18 Sep 2026",
-      "source_index": 120.33898305084745,
-      "index": 120.33898305084745,
-      "change_pct": 20.338983050847446,
-      "state": "high_anomaly"
+      "source_updated": "25 Sep 2026",
+      "source_index": 101.47058823529412,
+      "index": 101.47058823529412,
+      "change_pct": 1.470588235294116,
+      "state": "normal"
     },
     "electricity": {
       "status": "ok",
-      "value": 51182.68665825762,
+      "value": 51721.26892807182,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 53.9 GW · ISO-BRITANNIA 28.0 GW · BRASILIA 88.9 GW",
+      "scope": "SAKSA 53.9 GW · ISO-BRITANNIA 28.1 GW · BRASILIA 91.3 GW",
       "source_updated": "2026-09-29",
-      "source_index": 103.0621910210428,
+      "source_index": 103.98565767095083,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 102.19794329810661
+          "index": 102.1975071363756
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,25 +61,25 @@
         },
         {
           "name": "BRASILIA",
-          "index": 107.11639722538189
+          "index": 110.02212439318888
         }
       ],
-      "index": 103.0621910210428,
-      "change_pct": 3.062191021042807,
+      "index": 103.98565767095083,
+      "change_pct": 3.985657670950829,
       "state": "normal"
     },
     "energy": {
       "status": "ok",
-      "value": 96.37521789425544,
-      "display_value": "96.4",
+      "value": 103.31239890329209,
+      "display_value": "103.3",
       "provider": "JODI OIL · JODI GAS · IMF PORTWATCH",
-      "scope": "ÖLJY 87 · KAASU JA LNG 110 · KATTAVUUS 70 %",
-      "source_updated": "2026-09-20",
-      "source_index": 96.37521789425544,
+      "scope": "ÖLJY 99 · KAASU JA LNG 110 · KATTAVUUS 70 %",
+      "source_updated": "2026-09-27",
+      "source_index": 103.31239890329209,
       "components": [
         {
           "name": "ÖLJY",
-          "index": 87.33896900900505,
+          "index": 98.63599699628112,
           "weight": 40,
           "details": [
             {
@@ -132,7 +132,7 @@
         },
         {
           "name": "HORMUZ",
-          "index": 57.14285714285714,
+          "index": 128.57142857142858,
           "weight": 0,
           "role": "NOPEA HÄIRIÖSIGNAALI"
         }
@@ -141,10 +141,10 @@
       "confidence": "KESKITASO",
       "oil_updated": "2026-07",
       "gas_updated": "2026-01",
-      "fast_updated": "2026-09-20",
+      "fast_updated": "2026-09-27",
       "temporal_profile": "HIDAS TAUSTATILA + NOPEA HÄIRIÖSIGNAALI",
-      "index": 96.37521789425544,
-      "change_pct": -3.6247821057445577,
+      "index": 103.31239890329209,
+      "change_pct": 3.3123989032920917,
       "state": "normal"
     }
   }
