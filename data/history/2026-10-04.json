@@ -1,33 +1,33 @@
 {
   "date": "2026-10-04",
-  "generated_at": "2026-10-04T05:48:15.788532+00:00",
+  "generated_at": "2026-10-04T12:17:44.645296+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 10,
+  "baseline_observations": 90,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
   "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 95.22149600580971,
-      "display_value": "95.2",
+      "value": 91.52619215500421,
+      "display_value": "91.5",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 95.22149600580971,
-      "index": 95.22149600580971,
-      "change_pct": -4.778503994190288,
+      "source_index": 91.52619215500421,
+      "index": 91.52619215500421,
+      "change_pct": -8.47380784499579,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 5253.0,
-      "display_value": "5 253",
+      "value": 8542.0,
+      "display_value": "8 542",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-10-04T05:48:07+00:00",
+      "source_updated": "2026-10-04T12:17:40+00:00",
       "source_index": null,
-      "index": 92.05292210636993,
-      "change_pct": -7.947077893630066,
+      "index": 93.71879971474026,
+      "change_pct": -6.281200285259743,
       "state": "normal"
     },
     "freight": {
@@ -43,30 +43,12 @@
       "state": "normal"
     },
     "electricity": {
-      "status": "ok",
-      "value": 47963.39442272226,
-      "display_value": "3 VERKKOA",
-      "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 46.7 GW · ISO-BRITANNIA 26.2 GW · BRASILIA 90.4 GW",
-      "source_updated": "2026-10-03",
-      "source_index": 98.03285352743535,
-      "component_indices": [
-        {
-          "name": "SAKSA",
-          "index": 86.52203456024101
-        },
-        {
-          "name": "ISO-BRITANNIA",
-          "index": 100.0
-        },
-        {
-          "name": "BRASILIA",
-          "index": 108.89005303523199
-        }
-      ],
-      "index": 98.03285352743535,
-      "change_pct": -1.9671464725646501,
-      "state": "normal"
+      "status": "unavailable",
+      "value": null,
+      "provider": "ELECTRICITY",
+      "scope": "HTTP Error 503: Service Unavailable",
+      "state": "unavailable",
+      "change_pct": null
     },
     "energy": {
       "status": "ok",
