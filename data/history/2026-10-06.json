@@ -1,34 +1,34 @@
 {
   "date": "2026-10-06",
-  "generated_at": "2026-10-06T13:21:11.969096+00:00",
+  "generated_at": "2026-10-06T22:38:12.582354+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 90,
+  "baseline_observations": 7,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "anomaly",
+  "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 103.99977911058397,
-      "display_value": "104.0",
+      "value": 104.5943667049349,
+      "display_value": "104.6",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 103.99977911058397,
-      "index": 103.99977911058397,
-      "change_pct": 3.9997791105839724,
+      "source_index": 104.5943667049349,
+      "index": 104.5943667049349,
+      "change_pct": 4.594366704934899,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 11013.0,
-      "display_value": "11 013",
+      "value": 9342.0,
+      "display_value": "9 342",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-10-06T13:21:09+00:00",
+      "source_updated": "2026-10-06T22:38:08+00:00",
       "source_index": null,
-      "index": 120.82944758352076,
-      "change_pct": 20.82944758352076,
-      "state": "high_anomaly"
+      "index": 98.56509812196666,
+      "change_pct": -1.4349018780333438,
+      "state": "normal"
     },
     "freight": {
       "status": "ok",
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 48679.31102018041,
+      "value": 51170.69392393054,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 54.7 GW · ISO-BRITANNIA 28.4 GW · BRASILIA 74.1 GW",
+      "scope": "SAKSA 54.7 GW · ISO-BRITANNIA 29.0 GW · BRASILIA 84.4 GW",
       "source_updated": "2026-10-05",
-      "source_index": 96.88293048265842,
+      "source_index": 101.02423121409218,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 101.4707383227623
+          "index": 101.42906065503176
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,25 +61,25 @@
         },
         {
           "name": "BRASILIA",
-          "index": 89.61918286935887
+          "index": 101.65160942116232
         }
       ],
-      "index": 96.88293048265842,
-      "change_pct": -3.1170695173415766,
+      "index": 101.02423121409218,
+      "change_pct": 1.0242312140921825,
       "state": "normal"
     },
     "energy": {
       "status": "ok",
-      "value": 103.31239890329209,
-      "display_value": "103.3",
+      "value": 99.78354050384769,
+      "display_value": "99.8",
       "provider": "JODI OIL · JODI GAS · IMF PORTWATCH",
-      "scope": "ÖLJY 99 · KAASU JA LNG 110 · KATTAVUUS 70 %",
-      "source_updated": "2026-09-27",
-      "source_index": 103.31239890329209,
+      "scope": "ÖLJY 93 · KAASU JA LNG 110 · KATTAVUUS 70 %",
+      "source_updated": "2026-10-04",
+      "source_index": 99.78354050384769,
       "components": [
         {
           "name": "ÖLJY",
-          "index": 98.63599699628112,
+          "index": 92.81576528171558,
           "weight": 40,
           "details": [
             {
@@ -132,7 +132,7 @@
         },
         {
           "name": "HORMUZ",
-          "index": 128.57142857142858,
+          "index": 85.71428571428571,
           "weight": 0,
           "role": "NOPEA HÄIRIÖSIGNAALI"
         }
@@ -141,10 +141,10 @@
       "confidence": "KESKITASO",
       "oil_updated": "2026-07",
       "gas_updated": "2026-01",
-      "fast_updated": "2026-09-27",
+      "fast_updated": "2026-10-04",
       "temporal_profile": "HIDAS TAUSTATILA + NOPEA HÄIRIÖSIGNAALI",
-      "index": 103.31239890329209,
-      "change_pct": 3.3123989032920917,
+      "index": 99.78354050384769,
+      "change_pct": -0.21645949615231075,
       "state": "normal"
     }
   }
