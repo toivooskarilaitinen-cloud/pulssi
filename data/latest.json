@@ -1,34 +1,34 @@
 {
   "date": "2026-10-14",
-  "generated_at": "2026-10-14T11:47:12.474444+00:00",
+  "generated_at": "2026-10-14T17:07:02.212927+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 23,
+  "baseline_observations": 90,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "normal",
+  "system_state": "anomaly",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 107.53874817489304,
-      "display_value": "107.5",
+      "value": 106.84226273160516,
+      "display_value": "106.8",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 107.53874817489304,
-      "index": 107.53874817489304,
-      "change_pct": 7.538748174893044,
+      "source_index": 106.84226273160516,
+      "index": 106.84226273160516,
+      "change_pct": 6.84226273160516,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 8407.0,
-      "display_value": "8 407",
+      "value": 11371.0,
+      "display_value": "11 371",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-10-14T11:47:05+00:00",
+      "source_updated": "2026-10-14T17:07:06+00:00",
       "source_index": null,
-      "index": 103.95696797329046,
-      "change_pct": 3.9569679732904603,
-      "state": "normal"
+      "index": 127.42757886479521,
+      "change_pct": 27.42757886479521,
+      "state": "high_anomaly"
     },
     "freight": {
       "status": "ok",
@@ -52,16 +52,16 @@
     },
     "energy": {
       "status": "ok",
-      "value": 99.78354050384769,
-      "display_value": "99.8",
+      "value": 96.37521789425544,
+      "display_value": "96.4",
       "provider": "JODI OIL · JODI GAS · IMF PORTWATCH",
-      "scope": "ÖLJY 93 · KAASU JA LNG 110 · KATTAVUUS 70 %",
-      "source_updated": "2026-10-04",
-      "source_index": 99.78354050384769,
+      "scope": "ÖLJY 87 · KAASU JA LNG 110 · KATTAVUUS 70 %",
+      "source_updated": "2026-10-11",
+      "source_index": 96.37521789425544,
       "components": [
         {
           "name": "ÖLJY",
-          "index": 92.81576528171558,
+          "index": 87.33896900900505,
           "weight": 40,
           "details": [
             {
@@ -114,7 +114,7 @@
         },
         {
           "name": "HORMUZ",
-          "index": 85.71428571428571,
+          "index": 57.14285714285714,
           "weight": 0,
           "role": "NOPEA HÄIRIÖSIGNAALI"
         }
@@ -123,10 +123,10 @@
       "confidence": "KESKITASO",
       "oil_updated": "2026-07",
       "gas_updated": "2026-01",
-      "fast_updated": "2026-10-04",
+      "fast_updated": "2026-10-11",
       "temporal_profile": "HIDAS TAUSTATILA + NOPEA HÄIRIÖSIGNAALI",
-      "index": 99.78354050384769,
-      "change_pct": -0.21645949615231075,
+      "index": 96.37521789425544,
+      "change_pct": -3.6247821057445577,
       "state": "normal"
     }
   }
