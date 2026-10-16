@@ -1,33 +1,33 @@
 {
   "date": "2026-10-16",
-  "generated_at": "2026-10-16T11:18:14.969436+00:00",
+  "generated_at": "2026-10-16T16:35:20.330680+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 25,
+  "baseline_observations": 22,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
   "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 104.35788795758492,
-      "display_value": "104.4",
+      "value": 103.75826572682539,
+      "display_value": "103.8",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 104.35788795758492,
-      "index": 104.35788795758492,
-      "change_pct": 4.357887957584921,
+      "source_index": 103.75826572682539,
+      "index": 103.75826572682539,
+      "change_pct": 3.7582657268253854,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 7714.0,
-      "display_value": "7 714",
+      "value": 11286.0,
+      "display_value": "11 286",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-10-16T11:18:04+00:00",
+      "source_updated": "2026-10-16T16:35:20+00:00",
       "source_index": null,
-      "index": 95.29339098208771,
-      "change_pct": -4.706609017912285,
+      "index": 94.68517974747263,
+      "change_pct": -5.314820252527369,
       "state": "normal"
     },
     "freight": {
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 53431.55438425682,
+      "value": 53501.86319048863,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 56.8 GW · ISO-BRITANNIA 29.6 GW · BRASILIA 90.6 GW",
+      "scope": "SAKSA 57.0 GW · ISO-BRITANNIA 29.6 GW · BRASILIA 90.6 GW",
       "source_updated": "2026-10-15",
-      "source_index": 103.43531659967972,
+      "source_index": 103.56544099415841,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 103.1309669423594
+          "index": 103.517360670726
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,11 +61,11 @@
         },
         {
           "name": "BRASILIA",
-          "index": 107.30438125308285
+          "index": 107.30782341005147
         }
       ],
-      "index": 103.43531659967972,
-      "change_pct": 3.435316599679723,
+      "index": 103.56544099415841,
+      "change_pct": 3.5654409941584078,
       "state": "normal"
     },
     "energy": {
