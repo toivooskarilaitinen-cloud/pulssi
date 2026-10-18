@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-18",
+  "generated_at": "2026-10-18T10:59:34.982970+00:00",
+  "method_version": "v0.6",
+  "baseline_observations": 90,
+  "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
+  "system_state": "anomaly",
+  "flows": {
+    "internet": {
+      "status": "ok",
+      "value": 95.42094573599994,
+      "display_value": "95.4",
+      "provider": "CLOUDFLARE RADAR",
+      "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
+      "source_updated": null,
+      "source_index": 95.42094573599994,
+      "index": 95.42094573599994,
+      "change_pct": -4.579054264000064,
+      "state": "normal"
+    },
+    "aviation": {
+      "status": "ok",
+      "value": 6865.0,
+      "display_value": "6 865",
+      "provider": "OPENSKY NETWORK",
+      "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
+      "source_updated": "2026-10-18T10:59:26+00:00",
+      "source_index": null,
+      "index": 76.93169720401188,
+      "change_pct": -23.068302795988117,
+      "state": "low_anomaly"
+    },
+    "freight": {
+      "status": "ok",
+      "value": 94.14634146341464,
+      "display_value": "94.1",
+      "provider": "IMF PORTWATCH / HDX",
+      "scope": "VALITTUJEN SATAMIEN 7 PV INDEKSI",
+      "source_updated": "02 Oct 2026",
+      "source_index": 94.14634146341464,
+      "index": 94.14634146341464,
+      "change_pct": -5.853658536585357,
+      "state": "normal"
+    },
+    "electricity": {
+      "status": "ok",
+      "value": 49627.575553089635,
+      "display_value": "3 VERKKOA",
+      "provider": "ENERGY-CHARTS · ELEXON · ONS",
+      "scope": "SAKSA 48.8 GW · ISO-BRITANNIA 27.8 GW · BRASILIA 90.1 GW",
+      "source_updated": "2026-10-17",
+      "source_index": 98.07487383045635,
+      "component_indices": [
+        {
+          "name": "SAKSA",
+          "index": 88.58517852641543
+        },
+        {
+          "name": "ISO-BRITANNIA",
+          "index": 100.0
+        },
+        {
+          "name": "BRASILIA",
+          "index": 106.49082940349439
+        }
+      ],
+      "index": 98.07487383045635,
+      "change_pct": -1.9251261695436455,
+      "state": "normal"
+    },
+    "energy": {
+      "status": "unavailable",
+      "value": null,
+      "provider": "ENERGY",
+      "scope": "The read operation timed out",
+      "state": "unavailable",
+      "change_pct": null
+    }
+  }
+}
