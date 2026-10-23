@@ -1,34 +1,34 @@
 {
-  "date": "2026-10-22",
-  "generated_at": "2026-10-22T21:32:32.597402+00:00",
+  "date": "2026-10-23",
+  "generated_at": "2026-10-23T04:44:36.105654+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 26,
+  "baseline_observations": 30,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "watch",
+  "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 105.02932676109211,
-      "display_value": "105.0",
+      "value": 105.91593552214601,
+      "display_value": "105.9",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 105.02932676109211,
-      "index": 105.02932676109211,
-      "change_pct": 5.029326761092108,
+      "source_index": 105.91593552214601,
+      "index": 105.91593552214601,
+      "change_pct": 5.915935522146015,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 11104.0,
-      "display_value": "11 104",
+      "value": 5742.0,
+      "display_value": "5 742",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-10-22T21:32:25+00:00",
+      "source_updated": "2026-10-23T04:44:31+00:00",
       "source_index": null,
-      "index": 110.90137328339576,
-      "change_pct": 10.901373283395756,
-      "state": "high_watch"
+      "index": 103.4874290348743,
+      "change_pct": 3.487429034874296,
+      "state": "normal"
     },
     "freight": {
       "status": "ok",
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 53807.071989858436,
+      "value": 53433.17520588934,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 59.7 GW · ISO-BRITANNIA 30.9 GW · BRASILIA 84.4 GW",
-      "source_updated": "2026-10-21",
-      "source_index": 101.8005827076085,
+      "scope": "SAKSA 57.4 GW · ISO-BRITANNIA 31.0 GW · BRASILIA 85.9 GW",
+      "source_updated": "2026-10-22",
+      "source_index": 101.32423281072168,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 107.27714624838877
+          "index": 103.2327717599156
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,11 +61,11 @@
         },
         {
           "name": "BRASILIA",
-          "index": 98.34302880106065
+          "index": 100.76794088865542
         }
       ],
-      "index": 101.8005827076085,
-      "change_pct": 1.8005827076084984,
+      "index": 101.32423281072168,
+      "change_pct": 1.324232810721682,
       "state": "normal"
     },
     "energy": {
