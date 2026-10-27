@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-27",
+  "generated_at": "2026-10-27T17:57:59.761197+00:00",
+  "method_version": "v0.6",
+  "baseline_observations": 90,
+  "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
+  "system_state": "anomaly",
+  "flows": {
+    "internet": {
+      "status": "ok",
+      "value": 106.66099140186593,
+      "display_value": "106.7",
+      "provider": "CLOUDFLARE RADAR",
+      "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
+      "source_updated": null,
+      "source_index": 106.66099140186593,
+      "index": 106.66099140186593,
+      "change_pct": 6.660991401865928,
+      "state": "normal"
+    },
+    "aviation": {
+      "status": "ok",
+      "value": 11070.0,
+      "display_value": "11 070",
+      "provider": "OPENSKY NETWORK",
+      "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
+      "source_updated": "2026-10-27T17:57:58+00:00",
+      "source_index": null,
+      "index": 124.05446293494704,
+      "change_pct": 24.05446293494704,
+      "state": "high_anomaly"
+    },
+    "freight": {
+      "status": "ok",
+      "value": 94.14634146341464,
+      "display_value": "94.1",
+      "provider": "IMF PORTWATCH / HDX",
+      "scope": "VALITTUJEN SATAMIEN 7 PV INDEKSI",
+      "source_updated": "02 Oct 2026",
+      "source_index": 94.14634146341464,
+      "index": 94.14634146341464,
+      "change_pct": -5.853658536585357,
+      "state": "normal"
+    },
+    "electricity": {
+      "status": "ok",
+      "value": 50613.30153046009,
+      "display_value": "3 VERKKOA",
+      "provider": "ENERGY-CHARTS · ELEXON · ONS",
+      "scope": "SAKSA 56.0 GW · ISO-BRITANNIA 31.2 GW · BRASILIA 74.1 GW",
+      "source_updated": "2026-10-26",
+      "source_index": 94.4154889282832,
+      "component_indices": [
+        {
+          "name": "SAKSA",
+          "index": 97.82489581118135
+        },
+        {
+          "name": "ISO-BRITANNIA",
+          "index": 100.0
+        },
+        {
+          "name": "BRASILIA",
+          "index": 86.0360266386286
+        }
+      ],
+      "index": 94.4154889282832,
+      "change_pct": -5.584511071716804,
+      "state": "normal"
+    },
+    "energy": {
+      "status": "unavailable",
+      "value": null,
+      "provider": "ENERGY",
+      "scope": "IncompleteRead(48866 bytes read, 7651044 more expected)",
+      "state": "unavailable",
+      "change_pct": null
+    }
+  }
+}
