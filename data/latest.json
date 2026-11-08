@@ -1,34 +1,34 @@
 {
   "date": "2026-11-08",
-  "generated_at": "2026-11-08T13:18:22.194264+00:00",
+  "generated_at": "2026-11-08T21:59:32.064775+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 11,
+  "baseline_observations": 30,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "anomaly",
+  "system_state": "watch",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 88.47800360487203,
-      "display_value": "88.5",
+      "value": 101.15596717301953,
+      "display_value": "101.2",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 88.47800360487203,
-      "index": 88.47800360487203,
-      "change_pct": -11.521996395127971,
-      "state": "low_watch"
+      "source_index": 101.15596717301953,
+      "index": 101.15596717301953,
+      "change_pct": 1.1559671730195333,
+      "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 8005.0,
-      "display_value": "8 005",
+      "value": 10207.0,
+      "display_value": "10 207",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-11-08T13:18:20+00:00",
+      "source_updated": "2026-11-08T21:59:27+00:00",
       "source_index": null,
-      "index": 72.67362687244666,
-      "change_pct": -27.32637312755334,
-      "state": "low_anomaly"
+      "index": 101.94257178526843,
+      "change_pct": 1.9425717852684272,
+      "state": "normal"
     },
     "freight": {
       "status": "ok",
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 55007.49478005378,
+      "value": 53821.0107429355,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 53.5 GW · ISO-BRITANNIA 33.1 GW · BRASILIA 94.0 GW",
+      "scope": "SAKSA 53.6 GW · ISO-BRITANNIA 33.0 GW · BRASILIA 88.2 GW",
       "source_updated": "2026-11-07",
-      "source_index": 99.47964620485006,
+      "source_index": 97.43865863944197,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 89.21287642581018
+          "index": 89.38712602948567
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,25 +61,25 @@
         },
         {
           "name": "BRASILIA",
-          "index": 110.35071562686763
+          "index": 103.4948921107104
         }
       ],
-      "index": 99.47964620485006,
-      "change_pct": -0.5203537951499442,
+      "index": 97.43865863944197,
+      "change_pct": -2.561341360558032,
       "state": "normal"
     },
     "energy": {
       "status": "ok",
-      "value": 99.08733469719093,
-      "display_value": "99.1",
+      "value": 103.52226220836101,
+      "display_value": "103.5",
       "provider": "JODI OIL · JODI GAS · IMF PORTWATCH",
-      "scope": "ÖLJY 92 · KAASU JA LNG 110 · KATTAVUUS 70 %",
-      "source_updated": "2026-10-25",
-      "source_index": 99.08733469719093,
+      "scope": "ÖLJY 99 · KAASU JA LNG 110 · KATTAVUUS 70 %",
+      "source_updated": "2026-11-01",
+      "source_index": 103.52226220836101,
       "components": [
         {
           "name": "ÖLJY",
-          "index": 91.68544876475444,
+          "index": 98.98690089522248,
           "weight": 40,
           "details": [
             {
@@ -132,7 +132,7 @@
         },
         {
           "name": "HORMUZ",
-          "index": 85.71428571428571,
+          "index": 142.85714285714286,
           "weight": 0,
           "role": "NOPEA HÄIRIÖSIGNAALI"
         }
@@ -141,10 +141,10 @@
       "confidence": "KESKITASO",
       "oil_updated": "2026-08",
       "gas_updated": "2026-01",
-      "fast_updated": "2026-10-25",
+      "fast_updated": "2026-11-01",
       "temporal_profile": "HIDAS TAUSTATILA + NOPEA HÄIRIÖSIGNAALI",
-      "index": 99.08733469719093,
-      "change_pct": -0.9126653028090743,
+      "index": 103.52226220836101,
+      "change_pct": 3.5222622083610133,
       "state": "normal"
     }
   }
