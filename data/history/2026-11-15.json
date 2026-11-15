@@ -1,34 +1,34 @@
 {
   "date": "2026-11-15",
-  "generated_at": "2026-11-15T06:22:40.795222+00:00",
+  "generated_at": "2026-11-15T18:47:52.939903+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 10,
+  "baseline_observations": 90,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "watch",
+  "system_state": "anomaly",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 98.49621128036526,
-      "display_value": "98.5",
+      "value": 96.21685413342121,
+      "display_value": "96.2",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 98.49621128036526,
-      "index": 98.49621128036526,
-      "change_pct": -1.5037887196347413,
+      "source_index": 96.21685413342121,
+      "index": 96.21685413342121,
+      "change_pct": -3.783145866578792,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 4792.0,
-      "display_value": "4 792",
+      "value": 10716.0,
+      "display_value": "10 716",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-11-15T06:22:31+00:00",
+      "source_updated": "2026-11-15T18:47:53+00:00",
       "source_index": null,
-      "index": 94.23795476892822,
-      "change_pct": -5.762045231071781,
-      "state": "normal"
+      "index": 128.45070422535213,
+      "change_pct": 28.450704225352126,
+      "state": "high_anomaly"
     },
     "freight": {
       "status": "ok",
