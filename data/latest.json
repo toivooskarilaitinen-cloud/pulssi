@@ -1,34 +1,34 @@
 {
   "date": "2026-11-24",
-  "generated_at": "2026-11-24T09:49:34.389871+00:00",
+  "generated_at": "2026-11-24T22:22:01.898415+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 90,
+  "baseline_observations": 18,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "anomaly",
+  "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 106.10626270029893,
-      "display_value": "106.1",
+      "value": 107.01097575913982,
+      "display_value": "107.0",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 106.10626270029893,
-      "index": 106.10626270029893,
-      "change_pct": 6.106262700298927,
+      "source_index": 107.01097575913982,
+      "index": 107.01097575913982,
+      "change_pct": 7.010975759139825,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 5488.0,
-      "display_value": "5 488",
+      "value": 9690.0,
+      "display_value": "9 690",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-11-24T09:49:24+00:00",
+      "source_updated": "2026-11-24T22:21:50+00:00",
       "source_index": null,
-      "index": 65.25176862255513,
-      "change_pct": -34.74823137744487,
-      "state": "low_anomaly"
+      "index": 102.46378344083749,
+      "change_pct": 2.4637834408374886,
+      "state": "normal"
     },
     "freight": {
       "status": "ok",
@@ -44,16 +44,16 @@
     },
     "electricity": {
       "status": "ok",
-      "value": 57941.899576905875,
+      "value": 61075.91255538011,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 62.8 GW · ISO-BRITANNIA 36.5 GW · BRASILIA 84.9 GW",
+      "scope": "SAKSA 62.8 GW · ISO-BRITANNIA 38.5 GW · BRASILIA 94.1 GW",
       "source_updated": "2026-11-23",
-      "source_index": 101.06448934838427,
+      "source_index": 104.65137413869807,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 104.64376224530024
+          "index": 104.74287003551643
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,11 +61,11 @@
         },
         {
           "name": "BRASILIA",
-          "index": 98.64666615449526
+          "index": 109.42343301974047
         }
       ],
-      "index": 101.06448934838427,
-      "change_pct": 1.0644893483842708,
+      "index": 104.65137413869807,
+      "change_pct": 4.651374138698074,
       "state": "normal"
     },
     "energy": {
@@ -74,7 +74,7 @@
       "display_value": "95.7",
       "provider": "JODI OIL · JODI GAS · IMF PORTWATCH",
       "scope": "ÖLJY 86 · KAASU JA LNG 110 · KATTAVUUS 70 %",
-      "source_updated": "2026-11-15",
+      "source_updated": "2026-11-22",
       "source_index": 95.70405117446039,
       "components": [
         {
@@ -132,7 +132,7 @@
         },
         {
           "name": "HORMUZ",
-          "index": 42.857142857142854,
+          "index": 28.57142857142857,
           "weight": 0,
           "role": "NOPEA HÄIRIÖSIGNAALI"
         }
@@ -141,7 +141,7 @@
       "confidence": "KESKITASO",
       "oil_updated": "2026-09",
       "gas_updated": "2026-01",
-      "fast_updated": "2026-11-15",
+      "fast_updated": "2026-11-22",
       "temporal_profile": "HIDAS TAUSTATILA + NOPEA HÄIRIÖSIGNAALI",
       "index": 95.70405117446039,
       "change_pct": -4.295948825539611,
