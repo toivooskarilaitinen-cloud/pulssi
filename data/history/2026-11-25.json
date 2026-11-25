@@ -1,59 +1,59 @@
 {
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T08:25:54.683329+00:00",
+  "generated_at": "2026-11-25T21:38:09.692655+00:00",
   "method_version": "v0.6",
-  "baseline_observations": 90,
+  "baseline_observations": 30,
   "baseline_method": "same weekday + UTC hour; fallback same UTC hour; rolling median",
-  "system_state": "anomaly",
+  "system_state": "normal",
   "flows": {
     "internet": {
       "status": "ok",
-      "value": 104.89169515778754,
-      "display_value": "104.9",
+      "value": 106.43572587330203,
+      "display_value": "106.4",
       "provider": "CLOUDFLARE RADAR",
       "scope": "SUHTEELLINEN HTTP-AKTIIVISUUS · SAMA UTC-TUNTI = 100",
       "source_updated": null,
-      "source_index": 104.89169515778754,
-      "index": 104.89169515778754,
-      "change_pct": 4.891695157787538,
+      "source_index": 106.43572587330203,
+      "index": 106.43572587330203,
+      "change_pct": 6.435725873302033,
       "state": "normal"
     },
     "aviation": {
       "status": "ok",
-      "value": 5172.0,
-      "display_value": "5 172",
+      "value": 9259.0,
+      "display_value": "9 259",
       "provider": "OPENSKY NETWORK",
       "scope": "HAVAITUT ILMASSA OLEVAT ALUKSET",
-      "source_updated": "2026-11-25T08:25:47+00:00",
+      "source_updated": "2026-11-25T21:38:05+00:00",
       "source_index": null,
-      "index": 61.995804614923586,
-      "change_pct": -38.004195385076414,
-      "state": "low_anomaly"
+      "index": 91.4559462662979,
+      "change_pct": -8.5440537337021,
+      "state": "normal"
     },
     "freight": {
       "status": "ok",
-      "value": 98.93617021276597,
-      "display_value": "98.9",
+      "value": 104.89977728285078,
+      "display_value": "104.9",
       "provider": "IMF PORTWATCH / HDX",
       "scope": "VALITTUJEN SATAMIEN 7 PV INDEKSI",
-      "source_updated": "13 Nov 2026",
-      "source_index": 98.93617021276597,
-      "index": 98.93617021276597,
-      "change_pct": -1.0638297872340274,
+      "source_updated": "20 Nov 2026",
+      "source_index": 104.89977728285078,
+      "index": 104.89977728285078,
+      "change_pct": 4.899777282850778,
       "state": "normal"
     },
     "electricity": {
       "status": "ok",
-      "value": 62146.12713381326,
+      "value": 62438.843023841335,
       "display_value": "3 VERKKOA",
       "provider": "ENERGY-CHARTS · ELEXON · ONS",
-      "scope": "SAKSA 65.3 GW · ISO-BRITANNIA 39.1 GW · BRASILIA 94.1 GW",
+      "scope": "SAKSA 65.3 GW · ISO-BRITANNIA 39.6 GW · BRASILIA 94.1 GW",
       "source_updated": "2026-11-24",
-      "source_index": 105.51932039309646,
+      "source_index": 105.51582944780252,
       "component_indices": [
         {
           "name": "SAKSA",
-          "index": 107.37065938640382
+          "index": 107.36925392143152
         },
         {
           "name": "ISO-BRITANNIA",
@@ -61,11 +61,11 @@
         },
         {
           "name": "BRASILIA",
-          "index": 109.42343301974047
+          "index": 109.41400527041756
         }
       ],
-      "index": 105.51932039309646,
-      "change_pct": 5.519320393096464,
+      "index": 105.51582944780252,
+      "change_pct": 5.515829447802517,
       "state": "normal"
     },
     "energy": {
